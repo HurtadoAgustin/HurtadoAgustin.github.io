@@ -1,0 +1,9 @@
+######## TO-DO ########
+
+GOOGLE CLON:
+-Add suport to mobile devices.
+-Searcher with JS.
+
+GENERAL:
+-Add more proyects.
+-Make the index and proyects.html prettier
