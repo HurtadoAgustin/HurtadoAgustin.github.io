@@ -1,14 +1,14 @@
-mixin section-content(ibt)
+mixin section-content(id_bt, next_page, id_tl)
     .intro__content
-        h2 #{titles[0]}
+        h2 #{titles[id_tl]}
         p 
             | Lorem ipsum dolor sit amet consectetur adipisicing elit.
             | Similique illum fugiat sunt eligendi cupiditate ea officiis
             | soluta. Voluptate odit, harum fuga culpa deleniti blanditiis
             | repudiandae explicabo atque similique enim id.
             span Voluptate odit, harum fuga culpa deleniti blanditiis repudiandae explicabo atque similique enim id.
-        a.button(href="homepage.html")=button_text[ibt]
+        a.button(href=next_page)=button_text[id_bt]
 if mode
-    section.intro-aside: +section-content(1)
+    section.intro-aside: +section-content(1, "landing.html", 4)
 else
-    section.intro: +section-content(0)
+    section.intro: +section-content(0, "homepage.html", 0)
