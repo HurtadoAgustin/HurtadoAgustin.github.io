@@ -1,0 +1,32 @@
+-var titulos = ["Título Principal", "Subtitulo 1", "Subtitulo 2", "Subtitulo 3"]
+-var usuario = "Agustín"
+
+doctype html
+html(lang="es")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="platzi-games.css")
+        title Document
+    body
+        header
+            h1 PlatziGames
+            if usuario
+                a Hola #{usuario}
+            else
+                a.boton Registro
+        section.intro
+            .intro__imagen: img(src="images/imagen.png")
+            .intro__contenido
+                h2 #{titulos[0]}
+                p 
+                    | Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    | Similique illum fugiat sunt eligendi cupiditate ea officiis
+                    | soluta. Voluptate odit, harum fuga culpa deleniti blanditiis
+                    | repudiandae explicabo atque similique enim id.
+                    span Voluptate odit, harum fuga culpa deleniti blanditiis repudiandae explicabo atque similique enim id.
+                a.boton Leer mas
+            ul
+                each titulo in titulos
+                    li= titulo
