@@ -10,6 +10,15 @@ body {
 	margin: 0;
 }
 
+.content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-items: stretch;
+	flex-direction: row;
+	width: 100%;
+}
+
 h1, h2, h3 {
 	font-family: 'Oswald', sans-serif;
 	text-transform: uppercase;
@@ -17,8 +26,8 @@ h1, h2, h3 {
 }
 
 h2,h3 {
-	font-size: 35px;
-	font-weight: 900;
+	font-size: 2.6rem;
+	font-weight: bold;
 }
 
 header, footer {
@@ -29,6 +38,7 @@ header, footer {
 	background-color: #8898C0;
 	color: #FFF;
 	text-transform: uppercase;
+	align-items: center;
 }
 
 header .boton, header a {
@@ -50,26 +60,60 @@ header a {
 	padding: 40px 0 0 40px;
 }
 
-.intro__imagen img{
+.intro-aside{
+	background-color: white;
+	width: 70%;
+	height: auto;
+	display: flex;
+	padding: 50px;
+}
+
+.intro__image img{
 	width: 350px;
 	height: auto;
 	margin-right: 40px;
 }
 
-.intro__contenido p {
+.intro__content p {
 	max-width: 90%;
 	font-size: 20px;
 	line-height: 40px;
 	margin: 15px 0 30px 0;
 }
 
-.intro__contenido span {
+.intro__content span {
 	display: block;
 	font-weight: bold;
 	font-style: italic;
 }
 
-.boton {
+aside{
+	width: 30%;
+	height: inherit;
+	background-color: #eaf0f8;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 40px;
+}
+
+aside ul {
+	padding: 0;
+}
+
+aside li {
+	list-style: none;
+	padding: 15px 0px;
+	text-align: left;
+}
+
+aside a{
+	text-decoration: none;
+	color: #012179;
+	font-weight: 900;
+}
+
+.button {
 	display: block;
 	width: 200px;
 	height: 50px;
@@ -84,34 +128,29 @@ header a {
 	text-decoration: none;
 }
 
-.boton:hover {
+.button:hover {
 	background-color: #333;
 	color: #FFF;
 	text-decoration: none;
 }
 
-.contenido {
-	display: flex;
-	align-items: center;
-  justify-content: center;
-}
-.caja {
+.box {
 	max-width: 400px;
 	margin: 50px 20px;
 }
 
-.caja__imagen {
+.box__image {
 	background-color: #CED7E9;
 	text-align: center;
 	padding: 20px 0;
 }
 
-.caja__imagen img {
+.box__image img {
 	height: 200px;
 	width: auto;
 }
 
-.caja__contenido {
+.box__content {
 	background-color: #EEF1F7;
 	padding: 20px;
 }
@@ -121,7 +160,13 @@ footer ul {
 	display: flex;
 	align-content: flex-end;
 }
+
 footer li {
 	list-style: none;
-	margin: 0 20px;
+	margin: 0px 20px;
+}
+
+footer a{
+	text-decoration: none;
+	color: white;
 }

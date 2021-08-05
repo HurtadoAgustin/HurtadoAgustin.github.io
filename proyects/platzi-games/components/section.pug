@@ -1,0 +1,14 @@
+mixin section-content(ibt)
+    .intro__content
+        h2 #{titles[0]}
+        p 
+            | Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            | Similique illum fugiat sunt eligendi cupiditate ea officiis
+            | soluta. Voluptate odit, harum fuga culpa deleniti blanditiis
+            | repudiandae explicabo atque similique enim id.
+            span Voluptate odit, harum fuga culpa deleniti blanditiis repudiandae explicabo atque similique enim id.
+        a.button(href="homepage.html")=button_text[ibt]
+if mode
+    section.intro-aside: +section-content(1)
+else
+    section.intro: +section-content(0)

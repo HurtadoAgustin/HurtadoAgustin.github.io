@@ -1,0 +1,17 @@
+-var titles = ["Título Principal", "Subtitulo 1", "Subtitulo 2", "Subtitulo 3", "Artículo"]
+-var user = "Agustín"
+-var links = ["Acerca", "Noticias", "Contacto"]
+-var button_text = ["Leer más", "Volver atrás"]
+
+mixin box(image,title,content)
+    .box
+        .box__image: img(src="images/"+image)
+        .box__content
+            h3=title
+            p=content
+            
+mixin links(title)
+    h2=title
+    ul
+        each item in links
+            li: a(href="#")=item
