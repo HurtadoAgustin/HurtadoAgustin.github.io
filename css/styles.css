@@ -1,3 +1,24 @@
 *{box-sizing: border-box; padding: 0px; margin: 0px;}
 html{font-size: 62,5%;}
 
+/* Temporal code */
+body{width: 100vw; height: 100vh; background: linear-gradient(195deg,#00fff0 0%, #0057ff 80%);}
+nav{margin-top: 20px;}
+ul{display: flex; padding: 10px;}
+li{list-style: none; margin: 10px; padding: 3px; background-color: #ee4d4d; box-shadow: -2px 3px 12px 0px rgba(0,0,0,0.71);}
+a{
+	width: 200px;
+	height: 50px;
+	padding: 10px;
+	text-align: center;
+	color: #FFF;
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.4rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+li:hover{
+	background-color: #333;
+	color: #FFF;
+}
+.home{background-color: rgb(133, 133, 133); color: rgba(255, 255, 255, 0.836);}
