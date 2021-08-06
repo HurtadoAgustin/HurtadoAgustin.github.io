@@ -1,0 +1,28 @@
+-var titles = ["Título Principal", "Articulo", "Sub-art", "Sub-art", "Información"]
+-var user = "Agustín"
+-var links = ["Acerca", "Noticias", "Contacto"]
+-var button_text = ["Leer más", "Volver atrás"]
+
+-var img_generic = "../components/img/img.png"
+-var img_avatar = "../components/img/avatar.jpg"
+-var img_header_article = "../components/img/header_article.jpg"
+-var img_cuphead = "../components/img/cuphead.jpg"
+-var img_fortnite = "../components/img/fortnite.jpg"
+-var img_xbox = "../components/img/xbox.jpg"
+
+mixin box(image,title,art_link,content,art_class)
+    .box
+        .box__image: img(src=image)
+        .box__content
+            if article
+                span=art_class
+            a(href=art_link): h3=title
+            p=content
+            if article
+                a Leer más
+
+mixin links(title)
+    h2=title
+    ul
+        each item in links
+            li: a(href="#")=item

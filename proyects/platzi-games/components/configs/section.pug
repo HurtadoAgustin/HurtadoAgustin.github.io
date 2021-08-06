@@ -1,5 +1,6 @@
 mixin section-content(id_bt, next_page, id_tl)
     .intro__content
+        .intro__image: img(src=img_generic)
         h2 #{titles[id_tl]}
         p 
             | Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -8,6 +9,7 @@ mixin section-content(id_bt, next_page, id_tl)
             | repudiandae explicabo atque similique enim id.
             span Voluptate odit, harum fuga culpa deleniti blanditiis repudiandae explicabo atque similique enim id.
         a.button(href=next_page)=button_text[id_bt]
+        
 if mode
     section.intro-aside: +section-content(1, "landing.html", 4)
 else

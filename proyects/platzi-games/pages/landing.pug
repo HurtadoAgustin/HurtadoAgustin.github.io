@@ -1,7 +1,7 @@
-extend ../components/template.pug
+extend ../components/home-framework.pug
 block main
-    include ../components/section.pug
+    include ../components/configs/section.pug
     main.content
-        +box("imagen.jpg",titles[1],"Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum fugiat sunt eligendi cupiditate ea officiis soluta.")
-        +box("imagen.jpg",titles[2],"Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum fugiat sunt eligendi cupiditate ea officiis soluta.")
-        +box("imagen.jpg",titles[3],"Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum fugiat sunt eligendi cupiditate ea officiis soluta.")
+        +box("imagen.jpg",titles[1], "article.html", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum fugiat sunt eligendi cupiditate ea officiis soluta.")
+        +box("imagen.jpg",titles[2], "#", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum fugiat sunt eligendi cupiditate ea officiis soluta.")
+        +box("imagen.jpg",titles[3], "#", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique illum fugiat sunt eligendi cupiditate ea officiis soluta.")
