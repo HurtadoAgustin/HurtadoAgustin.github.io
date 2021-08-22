@@ -1,0 +1,24 @@
+{
+  "name": "async",
+  "version": "1.0.0",
+  "description": "learning about async in JS",
+  "main": "src/index.js",
+  "scripts": {
+    "callback": "node src/callback.js",
+    "callback-ch":"node src/callback-ch.js",
+    "promise": "node src/promise.js",
+    "promise-ch": "node src/promise-ch.js",
+    "async": "node src/async.js",
+    "async-ch": "node src/async-ch.js"
+  },
+  "keywords": [
+    "callbacks",
+    "promises",
+    "async"
+  ],
+  "author": "Hurtado Agustin",
+  "license": "ISC",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
