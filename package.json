@@ -1,0 +1,24 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "It's my personal blog, where I will work in my portfolio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HurtadoAgustin/blog.git"
+  },
+  "keywords": [
+    "blog",
+    "portfolio",
+    "personal"
+  ],
+  "author": "Hurtado Leandro Agustin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HurtadoAgustin/blog/issues"
+  },
+  "homepage": "https://github.com/HurtadoAgustin/blog#readme"
+}
