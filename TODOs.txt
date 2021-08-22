@@ -4,6 +4,9 @@ GOOGLE CLON:
 -Add suport to mobile devices.
 -Searcher with JS.
 
+PLATZI-GAMES:
+-Fix every page, and add some.
+
 GENERAL:
 -Add more proyects.
 -Make the index and proyects.html prettier
