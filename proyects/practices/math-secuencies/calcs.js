@@ -5,7 +5,7 @@
 */
 const fibo_in = parseInt(document.getElementById("fibonacci-input"));
 const fibo_bu = document.getElementById("fibonacci-button");
-const resultado = fibo_bu.addEventListener("click", fibonacci);
+const fibo_results = fibo_bu.addEventListener("click", fibonacci);
 function fibonacci(){
   let fibo = [];
   let a = b = 1; let c;
@@ -17,11 +17,28 @@ function fibonacci(){
   }
   return fibo;
 }
+
 /***   Conjetura de Collatz (3N + 1)
  * Numeros impar: 3x + 1
  * Numeros par: x / 2
 */
-
+var coll_in = document.getElementById("collatz-input");
+var coll_bu = document.getElementById("collatz-button");
+coll_bu.addEventListener("click", collatz);
+function collatz(){
+  let coll = [];
+  let last = 19;
+  if (last < 0 || last == undefined) return last;
+  while (last != 1){
+    if(last % 2 == 0){
+      last /= 2;
+    }else{
+      last = (last * 3) + 1;
+    }
+    coll.push(last);
+  }
+  return coll;
+}
 
 /*** Proporcion aurea
  * Es un cuadrado, que se corta a la mitad,
