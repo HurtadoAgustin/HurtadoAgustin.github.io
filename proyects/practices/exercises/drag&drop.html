@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag And Drop</title>
+  <style>
+    body{
+      color: #222;
+      padding: 0; 
+      margin: 0;
+    }
+    .rectangle{
+      padding: 100px 200px;
+      background: #ccc;
+      margin: 50px;
+      outline: 6px dashed #aaa;
+    }
+    .circle{
+      border-radius: 50%;
+      padding: 40px;
+      margin: 10px;
+      background: #f00;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+  <div class="rectangle"></div>
+  <script>
+    "use strict";
+    const circ = document.querySelector(".circle");
+    const rect = document.querySelector(".rectangle");
+
+    circ.addEventListener("dragstart", e => {
+      // console.log(e.dataTransfer);
+      e.dataTransfer.setData("type",e.target.className);
+      console.log(e.dataTransfer.getData("type"));
+      console.log(1);
+    });
+    circ.addEventListener("drag", () => console.log(2));
+    circ.addEventListener("dragend", () => console.log(3));
+    
+    rect.addEventListener("dragenter", () => console.log(4));
+    rect.addEventListener("dragover", e => {e.preventDefault(); console.log(5)});
+    rect.addEventListener("drop", e => {
+      console.log(e.dataTransfer.getData("type"));
+    });
+    rect.addEventListener("dragleave", () => console.log(7));
+  </script>
+</body>
+</html>
