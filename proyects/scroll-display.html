@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    .root{
+      display: flex;
+
+      height: 100vh;
+      width: 100vw;
+      
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      text-align: center;
+    }
+    .item{
+      padding: 50px;
+      width: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      scroll-snap-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="root">
+    <div class="item" style="background:blue">Loreaque eum hic soluta, at, velit beatae corrupti id? Eaque itaque quisquam excepturi, tenetur nobis vel nulla corrupti dolore aspernatur asperiores corporis adipisci perspiciatis.</div>
+    <div class="item" style="background:red">Lorem,Asperiores aperiam facilis eligendi ad, itaque consectetur fugiat cum, recusandae accusantium vel incidunt? Impedit nisi dolorem iusto soluta, minus sunt eum debitis tenetur maiores!</div>
+    <div class="item" style="background:pink">Loremilis sunt, eos aspernatur iste at explicabo. Deserunt est veritatis voluptate, excepturi esse maiores reiciendis rerum at magni dolor assumenda ipsam facilis.</div>
+    <div class="item" style="background:yellow">Lorbus maiores ea laboriosam soluta aspernatur exercitationem veritatis? Ut, maiores eaque earum repudiandae expedita sed nesciunt commodi exercitationem incidunt vero saepe aperiam doloribus soluta voluptatibus.</div>
+    <div class="item" style="background:green">Lore consequatur ut error. Qui totam vero voluptate quod, debitis, sequi quis porro, atque molestias obcaecati illum provident ratione tempora incidunt beatae veniam ab voluptatibus facere!</div>
+  </div>
+</body>
+</html>
