@@ -5,19 +5,24 @@ import { Searcher } from "./Searcher";
 import { TodoList } from "./TodoList";
 import { TodoItem } from "./TodoItem";
 import { CreateButton } from "./CreateButton";
-import { ButtonModal } from "./ButtonModal";
+import { ModalItem } from "./Modals/ModalItem";
+import { FormItem } from "./Modals/FormItem";
+import { ModalGroup } from "./Modals/ModalGroup";
+import { FormGroup } from "./Modals/FormGroup";
 import "../css/App.css";
 
 export function AppUI(){
   const {
     error,
     loading,
-    searchedTodos,
+    filteredTodos,
     completeTodo,
     deleteTodo,
     total,
-    openModal,
-    setOpenModal
+    openModalItem,
+    setOpenModalItem,
+    openModalGroup,
+    setOpenModalGroup,
   } = useContext(TodoContext);
 
   return (
@@ -31,13 +36,13 @@ export function AppUI(){
           </p>
         }
         {loading && <p className="TodoList--loading">Cargando...</p>}
-        {(!error && !loading && total==0) && 
+        {(!error && !loading && total===0) && 
           <p className="TodoList--empty">
             Agrega una tarea con el<b> + </b>
           </p>
         }
 
-        {searchedTodos.map(item => (
+        {filteredTodos.map(item => (
           <TodoItem 
             key={item.text}
             text={item.text}
@@ -47,14 +52,22 @@ export function AppUI(){
           />
         ))}
       </TodoList>
-      {!!openModal && 
-        <ButtonModal>
-          <p>aaaaaaaa</p>
-        </ButtonModal>
-      }
-      <CreateButton 
-        setOpenModal={setOpenModal}
-      />
+      {!!openModalItem && (
+        <ModalItem>
+          <FormItem />
+        </ModalItem>
+      )}
+      {!!openModalGroup && (
+        <ModalGroup>
+          <FormGroup />
+        </ModalGroup>
+      )}
+      {! (openModalItem || openModalGroup) && (
+        <CreateButton 
+          text="+"
+          setOpenModalItem={setOpenModalItem}
+        />
+      )}
     </main>
   )
 }

@@ -1,0 +1,76 @@
+
+.ModalBox {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 75vh;
+  text-align: center;
+  background-color: #ddd;
+  border: 1px solid #222;
+  border-radius: 10px;
+}
+
+.ModalBox--title {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 25%;
+  font-size: 3rem;
+  font-weight: bold;
+  align-self: center;
+  background-color: red;
+}
+
+.ModalBox--title span {
+  align-self: center;
+  background-color: pink;
+}
+
+.ModalBox--text {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  height: 30%;
+  background-color: blue;
+}
+
+.ModalBox--text__input {
+  width: 80%;
+  height: 60%;
+  background-color: #777;
+  align-self: center;
+  resize: none;
+}
+
+.ModalBox--textButton {
+  width: 20%;
+  height: 60%;
+  align-self: center;
+}
+
+.ModalBox--textButton__active {
+  background-color: green;
+  
+}
+
+.ModalBox--colors {
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+  height: 20%;
+  background-color: rgb(139, 139, 3);
+}
+
+.ModalBox--colors__text {
+  width: 25%;
+  background-color: violet;
+}
+
+.ModalBox--colors__input {
+  width: 20%;
+  height: 50%;
+  align-self: center;
+  background-color: white;
+}
+
+

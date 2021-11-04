@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 export function useLocalStorage(itemName, initialValue){
+  const [item, setItem] = useState(initialValue);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [item, setItem] = useState(initialValue);
   
   useEffect(() => {
-    setTimeout(()=>{ //Simulacion de respuesta de API
+    setTimeout(()=>{ // API response simulation
       try{
         const localStorageItem = localStorage.getItem(itemName);
         let parsedItem;

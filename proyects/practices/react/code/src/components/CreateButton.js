@@ -1,12 +1,17 @@
+import { useState } from "react";
 import "../css/CreateButton.css";
 
-export function CreateButton({ setOpenModal }){
+export function CreateButton({ text, setOpenModalItem }){
+  const onOpenModal = () => {
+    setOpenModalItem(true);
+  }
+
   return (
     <button
       className="CreateButton"
-      onClick={() => setOpenModal(true)}
+      onClick={onOpenModal}
     >
-      +
+      {text}
     </button>
   );
 }
