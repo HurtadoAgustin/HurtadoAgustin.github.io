@@ -1,4 +1,6 @@
-.CreateButton{
+import styled from "styled-components";
+
+export const CreateButtonStyled = styled.button`
   position: fixed;
   right: 15px;
   bottom: 15px;
@@ -12,8 +14,8 @@
   color: #555;
   cursor: pointer;
   z-index: 2;
-}
 
-.CreateButton:hover{
-  background-color: #ccc;
-}
+  &:hover{
+    background-color: #ccc;
+  }
+`

@@ -1,3 +1,8 @@
+.a {
+  display: flex;
+  flex-direction: column;
+}
+/*MODIFICAR*/
 
 .ModalBox {
   display: flex;
@@ -50,7 +55,7 @@
 
 .ModalBox--textButton__active {
   background-color: green;
-  
+
 }
 
 .ModalBox--colors {

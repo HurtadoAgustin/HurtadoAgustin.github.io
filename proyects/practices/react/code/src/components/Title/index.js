@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import { TodoContext } from "../GlobalContext";
-import "../css/Title.css"
+import { TodoContext } from "../../GlobalContext";
+import { TitleStyled } from "./style.js";
 
 export function Title(){
   const { completed, total } = useContext(TodoContext);
 
   return (
-    <div className="Title">
+    <TitleStyled>
       <h1>TO-DO List</h1>
-      <h2 className="Counter">
+      <h2>
         Has completado <b>{completed}</b> de <b>{total}</b> tareas
       </h2>
-    </div>
+    </TitleStyled>
   );
 }

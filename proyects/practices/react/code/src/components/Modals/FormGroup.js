@@ -7,13 +7,11 @@ import { GroupEditMode } from "./GroupEditMode";
 export function FormGroup(){
   const {
     setOpenModalGroup,
-    setFilter,
+    addGroup,
     titleValue,
-    setTitleValue,
-    bgcolorValue,
-    setBgcolorValue,
-    txtcolorValue,
-    setTxtcolorValue
+    bgColorValue,
+    txtColorValue,
+    completedColor
   } = useContext(TodoContext);
 
   const [mode, setMode] = useState(true);
@@ -23,12 +21,17 @@ export function FormGroup(){
   }
 
   const onSubmit = () => {
-    console.log("submit")
+    addGroup({
+      title: titleValue,
+      bgColor: bgColorValue,
+      txtColor: txtColorValue,
+      completedColor: completedColor,
+    });
   }
 
   return (
     <form
-      onSubmit={onSubmit} 
+      onSubmit={onSubmit}
       className="ModalBox"
     >
       <section className="ModalBox--title">
@@ -45,11 +48,11 @@ export function FormGroup(){
           {!!mode ? "Agregar" : "Editar"}
         </button>
       </label>
-      {!!mode 
+      {!!mode
         ? <GroupAddMode />
         : <GroupEditMode />
       }
-      <FormButtons 
+      <FormButtons
         setOpenModal={setOpenModalGroup}
       />
     </form>

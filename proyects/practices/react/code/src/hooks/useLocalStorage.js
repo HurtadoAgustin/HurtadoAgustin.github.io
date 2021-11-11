@@ -4,7 +4,7 @@ export function useLocalStorage(itemName, initialValue){
   const [item, setItem] = useState(initialValue);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     setTimeout(()=>{ // API response simulation
       try{
@@ -14,7 +14,7 @@ export function useLocalStorage(itemName, initialValue){
           localStorage.setItem(itemName, JSON.stringify(initialValue));
           parsedItem = [];
         } else parsedItem = JSON.parse(localStorageItem);
-        
+
         setItem(parsedItem);
         setLoading(false);
       }catch(error){

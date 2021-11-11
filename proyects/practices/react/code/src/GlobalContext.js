@@ -11,11 +11,8 @@ function TodoProvider(props){
     error
   } = useLocalStorage("TODOS_V1", []);
 
-  const {item: groups, saveItem: saveGroups} = useLocalStorage("TODOS_GROUPS", []);
-  
   const [searchValue, setSearchValue] = useState("");
   const [openModalItem, setOpenModalItem] = useState(false); //true true true
-  const [openModalGroup, setOpenModalGroup] = useState(false);
   const [filter, setFilter] = useState(["false",{}]);
 
   const completed = todos.filter(todo => !!todo.completed).length;
@@ -24,9 +21,9 @@ function TodoProvider(props){
   let filteredTodos = [];
   if (!searchValue.length >= 1){
     switch (filter[0]) {
-      case "green": filteredTodos = todos.filter(todo => todo.completed); break; 
+      case "green": filteredTodos = todos.filter(todo => todo.completed); break;
       case "black": filteredTodos = todos.filter(todo => !todo.completed); break;
-      default: filteredTodos = todos; 
+      default: filteredTodos = todos;
     }
   } else {
     filteredTodos = todos.filter(todo => {
@@ -38,16 +35,22 @@ function TodoProvider(props){
     if(filter[0] === "black") filteredTodos = filteredTodos.filter(todo => !todo.completed)
   }
 
-  const addTodo = ( text, completed ) => {
+  const addTodo = ({ text, completed, group }) => {
     const todoIndex = todos.find(todo => todo.text === text);
     if(todoIndex) {
-      
+
       return alert("Hay dos iguales")
     };
     const newTodos = [...todos];
     newTodos.push({
       completed: completed,
-      text: text
+      text: text,
+      group: {
+        title: group.title,
+        bgColor: group.bgColor,
+        txtColor: group.txtColor,
+        completedColor: group.completedColor
+      }
     });
     saveTodos(newTodos);
     setOpenModalItem(false);
@@ -69,27 +72,37 @@ function TodoProvider(props){
   }
 
   /* GROUPS */
-  
-  const [titleValue, setTitleValue] = useState('');
-  const [bgcolorValue, setBgcolorValue] = useState('#ffffff');
-  const [txtcolorValue, setTxtcolorValue] = useState("#000000");
+  const defaultColors = {
+    title: "Default",
+    bgColor: "#eeeeee",
+    txtColor: "#000000",
+    completedColor: "#009900"
+  };
+  const {item: groups, saveItem: saveGroups} = useLocalStorage("TODOS_GROUPS", [defaultColors]);
+  const [openModalGroup, setOpenModalGroup] = useState(false);
 
-  const addGroup = ({ title, bgcolor, txtcolor }) => {
+  const [titleValue, setTitleValue] = useState('');
+  const [bgColorValue, setBgColorValue] = useState('#ffffff');
+  const [txtColorValue, setTxtColorValue] = useState("#000000");
+  const [completedColorValue, setCompletedColorValue] = useState("#00ff00");
+
+  const addGroup = ({ title, bgColor, txtColor, completedColor }) => {
     const isGroup = groups.find(group => group.title === title);
     if(isGroup) {
-
-      return alert("Hay dos iguales")
+      //TODO
+      return alert("Hay dos iguales");
     };
     const newGroups = [...groups];
     newGroups.push({
       title: title,
-      bgcolor: bgcolor,
-      txtcolor: txtcolor
+      bgColor: bgColor,
+      txtColor: txtColor,
+      completedColor: completedColor
     });
     saveGroups(newGroups);
     setOpenModalGroup(false);
   }
-  
+
   return(
     <TodoContext.Provider value={{
       todos,
@@ -102,7 +115,6 @@ function TodoProvider(props){
       addTodo,
       completeTodo,
       deleteTodo,
-      addGroup,
       loading,
       error,
       openModalItem,
@@ -111,13 +123,17 @@ function TodoProvider(props){
       setOpenModalGroup,
       filter,
       //Groups:
+      groups,
+      addGroup,
       setFilter,
       titleValue,
       setTitleValue,
-      bgcolorValue,
-      setBgcolorValue,
-      txtcolorValue,
-      setTxtcolorValue
+      bgColorValue,
+      setBgColorValue,
+      txtColorValue,
+      setTxtColorValue,
+      completedColorValue,
+      setCompletedColorValue
     }}>
       {props.children}
     </TodoContext.Provider>

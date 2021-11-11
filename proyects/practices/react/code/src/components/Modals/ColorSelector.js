@@ -1,17 +1,19 @@
 import { useContext, useState } from "react";
 import { TodoContext } from "../../GlobalContext";
-import { GroupButton } from "../GroupButton";
+import { GroupButton } from "../GroupButton/index.js";
 
-export function ColorSelector() {
+export function ColorSelector({ selectedGroup, setSelectedGroup }) {
   const {
-    todos,
+    groups,
     setOpenModalGroup,
  } = useContext(TodoContext);
+
+  const onSelectGroup = (e) => {setSelectedGroup(e.target.value)};
 
   return (
     <label
       className="ModalBox--colors"
-      htmlFor="todo-colors"  
+      htmlFor="todo-colors"
     >
       <p className="ModalBox--colors__text">
         Elige un color:
@@ -19,14 +21,27 @@ export function ColorSelector() {
       <select
         className="ModalBox--colors__input"
         id="todo-colors"
+        value={selectedGroup}
+        onChange={onSelectGroup}
+        required
       >
-        {todos.map((item, index) => (
-          <option>
-            {index}
-          </option>  
+        <option
+          value=""
+          selected
+          hidden
+        >
+          Color
+        </option>
+        {groups.map(groupItem => (
+          <option
+            key={groupItem.title}
+            value={groupItem.title}
+          >
+            {groupItem.title}
+          </option>
         ))}
       </select>
-      <GroupButton 
+      <GroupButton
           setOpenModalGroup={setOpenModalGroup}
         />
     </label>

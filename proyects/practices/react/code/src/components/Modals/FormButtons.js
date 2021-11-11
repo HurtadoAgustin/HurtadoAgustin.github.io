@@ -4,7 +4,7 @@ export function FormButtons({ setOpenModal }) {
   }
 
   return (
-    <label 
+    <label
       className="ModalButtons--box"
       htmlFor="form-buttons"
     >

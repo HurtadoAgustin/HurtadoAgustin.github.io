@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../css/CreateButton.css";
 
 export function GroupButton({ openModalGroup, setOpenModalGroup }){
   const onOpenModalGroup = () => {

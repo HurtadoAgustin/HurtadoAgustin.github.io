@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../css/CreateButton.css";
+import { CreateButtonStyled } from "./style.js";
 
 export function CreateButton({ text, setOpenModalItem }){
   const onOpenModal = () => {
@@ -7,11 +7,10 @@ export function CreateButton({ text, setOpenModalItem }){
   }
 
   return (
-    <button
-      className="CreateButton"
+    <CreateButtonStyled
       onClick={onOpenModal}
     >
       {text}
-    </button>
+    </CreateButtonStyled>
   );
 }
