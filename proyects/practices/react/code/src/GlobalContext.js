@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { useFilters } from "./hooks/useFilters";
 
 const TodoContext = React.createContext();
 
@@ -13,27 +14,16 @@ function TodoProvider(props){
 
   const [searchValue, setSearchValue] = useState("");
   const [openModalItem, setOpenModalItem] = useState(false); //true true true
-  const [filter, setFilter] = useState(["false",{}]);
 
   const completed = todos.filter(todo => !!todo.completed).length;
   const total = todos.length;
 
-  let filteredTodos = [];
-  if (!searchValue.length >= 1){
-    switch (filter[0]) {
-      case "green": filteredTodos = todos.filter(todo => todo.completed); break;
-      case "black": filteredTodos = todos.filter(todo => !todo.completed); break;
-      default: filteredTodos = todos;
-    }
-  } else {
-    filteredTodos = todos.filter(todo => {
-      const todoText = todo.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchText);
-    })
-    if(filter[0] === "green") filteredTodos = filteredTodos.filter(todo => todo.completed)
-    if(filter[0] === "black") filteredTodos = filteredTodos.filter(todo => !todo.completed)
-  }
+  const {
+    filteredTodos,
+    changeFilters,
+    completedFilter,
+    groupFilter
+   } = useFilters(todos, searchValue);
 
   const addTodo = ({ text, completed, group }) => {
     const todoIndex = todos.find(todo => todo.text === text);
@@ -82,9 +72,9 @@ function TodoProvider(props){
   const [openModalGroup, setOpenModalGroup] = useState(false);
 
   const [titleValue, setTitleValue] = useState('');
-  const [bgColorValue, setBgColorValue] = useState('#ffffff');
-  const [txtColorValue, setTxtColorValue] = useState("#000000");
-  const [completedColorValue, setCompletedColorValue] = useState("#00ff00");
+  const [bgColorValue, setBgColorValue] = useState('#eeeeee');
+  const [txtColorValue, setTxtColorValue] = useState("#222222");
+  const [completedColorValue, setCompletedColorValue] = useState("#009900");
 
   const addGroup = ({ title, bgColor, txtColor, completedColor }) => {
     const isGroup = groups.find(group => group.title === title);
@@ -111,7 +101,6 @@ function TodoProvider(props){
       completed,
       searchValue,
       setSearchValue,
-      filteredTodos,
       addTodo,
       completeTodo,
       deleteTodo,
@@ -121,11 +110,14 @@ function TodoProvider(props){
       setOpenModalItem,
       openModalGroup,
       setOpenModalGroup,
-      filter,
+      //Filters:
+      filteredTodos,
+      changeFilters,
+      completedFilter,
+      groupFilter,
       //Groups:
       groups,
       addGroup,
-      setFilter,
       titleValue,
       setTitleValue,
       bgColorValue,
@@ -133,7 +125,7 @@ function TodoProvider(props){
       txtColorValue,
       setTxtColorValue,
       completedColorValue,
-      setCompletedColorValue
+      setCompletedColorValue,
     }}>
       {props.children}
     </TodoContext.Provider>

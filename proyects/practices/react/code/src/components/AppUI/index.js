@@ -11,7 +11,6 @@ import { FormGroup } from "../Modals/FormGroup";
 //ADD CONFIGURATION
 import "./style.css";
 
-
 export function AppUI(){
   const {
     openModalItem,

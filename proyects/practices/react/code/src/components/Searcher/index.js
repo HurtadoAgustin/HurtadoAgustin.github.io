@@ -6,20 +6,25 @@ export function Searcher(){
   const {
     searchValue,
     setSearchValue,
-    filter,
-    setFilter
+    completedFilter,
+    changeFilters
   } = useContext(TodoContext);
 
-  const toggleFilterState = () => {
-    switch (filter[0]) {
-      case "black": setFilter(["green",{}]); break;
-      case "green": setFilter(["false",{}]); break;
-      default: setFilter(["black",{}]);
+  const toggleFilterCompletedState = () => {
+    switch (completedFilter) {
+      case "todo": changeFilters({completedNewFilter: "done"}); break;
+      case "done": changeFilters({completedNewFilter: "false"}); break;
+      case "false": changeFilters({completedNewFilter: "todo"}); break;
     }
+  }
+  const toggleFilterGroupState = () => {
+    changeFilters();
   }
 
   return (
-    <SearcherStyled filter={filter[0]}>
+    <SearcherStyled
+      completed={completedFilter}
+    >
       <input
         type="text"
         placeholder="Buscar task"
@@ -27,9 +32,16 @@ export function Searcher(){
         onChange={e =>setSearchValue(e.target.value)}
       />
       <button
-        onClick={toggleFilterState}
+        id="filter--completed"
+        onClick={toggleFilterCompletedState}
       >
         √
+      </button>
+      <button
+        id="filter--group"
+        onClick={toggleFilterGroupState}
+      >
+        *
       </button>
     </SearcherStyled>
   );

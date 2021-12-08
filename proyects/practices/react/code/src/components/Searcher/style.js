@@ -18,10 +18,10 @@ export const SearcherStyled = styled.div`
   }
 
   & input {
-    width: 80%;
+    width: 60%;
     cursor: text;
 
-    &::placeholder{
+    &::placeholder {
       color: rgb(150, 167, 150);
       font-weight: 600;
       font-size: 2rem;
@@ -37,12 +37,18 @@ export const SearcherStyled = styled.div`
     border-left: 1px solid #111;
     font-weight: bold;
     cursor: pointer;
-    color: ${({filter}) => (filter === "green") ? "green" : "black"};
-    text-shadow: 0px 0px 5px ${({filter}) => (filter === "green") ? "rgba(7,223,19,0.94)" : "rgba(0,0,0,0.94)"};
-    text-decoration: ${({filter}) => (filter === "false") ? "line-through" : "none"};
 
     &:hover {
       background-color: #ccc;
     }
+  }
+
+  & #filter--completed {
+    color: ${({completed}) => (completed === "done") ? "green" : "black"};
+    text-shadow: 0px 0px 5px ${({completed}) => (completed === "done") ? "rgba(7,223,19,0.94)" : "rgba(0,0,0,0.94)"};
+    text-decoration: ${({completed}) => (completed === "false") ? "line-through" : "none"};
+  }
+
+  & #filter--group {
   }
 `;
