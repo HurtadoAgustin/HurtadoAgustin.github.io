@@ -1,40 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export function useFilters( todos, searchValue ){ //add initialFilter
-  const [filteredTodos, setFilteredTodos] = useState([]);
-  const [completedFilter, setCompletedFilter] = useState("false");
-  const [groupFilter, setGroupFilter] = useState("Default");
+export function useFilters( initialValue, items ){
+  const [filters, setFilters] = useState( initialValue );
+  const [filteredItems, setFilteredItems] = useState(items);
 
-  //filter with initialFilter, useEffect
-
-  const changeFilters = ({
-    completedNewFilter = completedFilter,
-    groupNewFilter = groupFilter
-  }) => {
-    setCompletedFilter(completedNewFilter);
-    setGroupFilter(groupNewFilter);
-
-    /*     'COMPLETED' FILTER     */
-    if (!searchValue.length >= 1) {
-      if (completedNewFilter === "done") setFilteredTodos(todos.filter(todo => todo.completed));
-      if (completedNewFilter === "todo") setFilteredTodos(todos.filter(todo => !todo.completed));
-      if (completedNewFilter === "false") setFilteredTodos(todos);
+  useEffect(() => {
+    let newItems = [];
+    if(filters.search.length >= 1){
+      newItems = items.filter(item => {
+        const itemText = item.text;
+        const searchText = filters.search;
+        return itemText.includes(searchText);
+      });
     } else {
-      setFilteredTodos(todos.filter(todo => {
-        const todoText = todo.text.toLowerCase();
-        const searchText = searchValue.toLowerCase();
-        return todoText.includes(searchText);
-      }));
-      if (completedNewFilter === "done") setFilteredTodos(todos.filter(todo => todo.completed));
-      if (completedNewFilter === "todo") setFilteredTodos(todos.filter(todo => !todo.completed));;
+      newItems = items;
     }
+
+    (filters.completed && newItems.length >= 1)
+    ? newItems = newItems.filter(item => item.completed)
+    : newItems = newItems.filter(item => !item.completed);
+    
     /*     'GROUPS' FILTER     */
 
-  }
+    setFilteredItems(newItems);
+  },[filters, items]);
+
   return {
-    filteredTodos,
-    changeFilters,
-    completedFilter,
-    groupFilter
+    filters,
+    setFilters,
+    filteredItems
   };
-}
+};

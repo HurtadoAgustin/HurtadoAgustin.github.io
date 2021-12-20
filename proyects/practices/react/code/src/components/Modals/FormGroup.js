@@ -8,10 +8,7 @@ export function FormGroup(){
   const {
     setOpenModalGroup,
     addGroup,
-    titleValue,
-    bgColorValue,
-    txtColorValue,
-    completedColor
+    formValues
   } = useContext(TodoContext);
 
   const [mode, setMode] = useState(true);
@@ -22,10 +19,10 @@ export function FormGroup(){
 
   const onSubmit = () => {
     addGroup({
-      title: titleValue,
-      bgColor: bgColorValue,
-      txtColor: txtColorValue,
-      completedColor: completedColor,
+      title: formValues.title,
+      bgColor: formValues.bgColor,
+      txtColor: formValues.txtColor,
+      completedColor: formValues.completed,
     });
   }
 

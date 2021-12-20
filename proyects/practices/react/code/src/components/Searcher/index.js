@@ -4,42 +4,43 @@ import { SearcherStyled } from "./style.js";
 
 export function Searcher(){
   const {
-    searchValue,
-    setSearchValue,
-    completedFilter,
-    changeFilters
+    filters,
+    setFilters,
   } = useContext(TodoContext);
 
-  const toggleFilterCompletedState = () => {
-    switch (completedFilter) {
-      case "todo": changeFilters({completedNewFilter: "done"}); break;
-      case "done": changeFilters({completedNewFilter: "false"}); break;
-      case "false": changeFilters({completedNewFilter: "todo"}); break;
-    }
+  const handleSearch = e => {
+    setFilters({...filters, search: e.target.value});
   }
-  const toggleFilterGroupState = () => {
-    changeFilters();
+
+  const handleFilterCompleted = () => {
+    setFilters(prevValue => (
+      {...filters, completed: !prevValue.completed}
+  ))}
+
+  const handleFilterGroup = () => {
+    // setFilters()
+    alert("grupo cambiado");
   }
 
   return (
     <SearcherStyled
-      completed={completedFilter}
+      completed={filters.completed}
     >
       <input
         type="text"
         placeholder="Buscar task"
-        value={searchValue}
-        onChange={e =>setSearchValue(e.target.value)}
+        value={filters.search}
+        onChange={handleSearch}
       />
       <button
         id="filter--completed"
-        onClick={toggleFilterCompletedState}
+        onClick={handleFilterCompleted}
       >
         √
       </button>
       <button
         id="filter--group"
-        onClick={toggleFilterGroupState}
+        onClick={handleFilterGroup}
       >
         *
       </button>

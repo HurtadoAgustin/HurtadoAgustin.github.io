@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { CreateButtonStyled } from "./style.js";
 
 export function CreateButton({ text, setOpenModalItem }){

@@ -7,10 +7,10 @@ export function TodoList(){
   const {
     error,
     loading,
+    total,
     filteredTodos,
     completeTodo,
-    deleteTodo,
-    total
+    deleteTodo
   } = useContext(TodoContext);
 
   return (
@@ -36,7 +36,7 @@ export function TodoList(){
           key={item.text}
           text={item.text}
           completed={item.completed}
-          bgColor={item.group.bgColor}
+          bgColor={item.group.bgColor} //eliminar todo esto
           txtColor={item.group.txtColor}
           completedColor={item.group.completedColor}
           onComplete={() => completeTodo(item.text)}
